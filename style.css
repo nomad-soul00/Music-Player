@@ -1,0 +1,167 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    /* box-sizing: border-box; */
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #181818;
+}
+/* disigning navabr */
+
+nav{
+    width: 100%;
+    display: flex;
+    /* border: 2px solid red; */
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px;
+    background-color: #282828;
+    color: white;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-family: monospace;
+}
+
+nav > h1 a{
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+
+.search-bar{
+    /* background-color: black; */
+    border: none;
+    background-color: #404040;
+    padding: 8px 15px;
+    border-radius: 27px;
+    width: 20%;
+    color: white;
+}
+
+/* left side menu design */
+
+.main-box{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    /* border: 2px solid red; */
+}
+
+.menu{
+    width: 20vw;
+    /* border: 2px solid red; */
+    padding: 10px;
+    background-color: #202020;
+    margin-top: 5px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    /* height: calc(100vh - 65px)} */
+   
+}
+
+.menu > ul{
+    /* text-decoration: none; */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* align-items:; */
+    /* text-align: justify; */
+    /* justify-content: center; */
+    padding: 27px 0px 0px 24px;    ;
+    height: calc(100vh - 10vh);
+    box-sizing: border-box;
+    list-style-type: none;
+
+}
+
+.menu > ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.3rem;
+    font-family: monospace;
+    /* transform: all 7s ease-in; */
+    transition: all 0.2s ease;
+}
+
+.menu > ul li a:hover{
+    color: #1db954;
+}
+
+/* right side container desing */
+
+.right-container{
+    /* border: 2px solid red; */
+    width: 80vw;
+    background-color: #181818;
+    padding: 34px 40px;
+    box-sizing: border-box;
+    color: white;
+    font-family: monospace;
+}
+.right-container > h1{
+    margin-left: 15px;
+    margin-bottom: 10px;
+    /* color: red; */
+}
+.playlist-container{
+    /* border: 2px solid red; */
+    width: 100%;
+    min-height: calc(100vh - 45vh);
+    margin-left: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px
+}
+
+/* play;ist card designs */
+.playlists{
+    width: 20%;
+    /* border:2px solid red; */
+    height: 230px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    transition: all 0.2s ease-out;
+}
+
+.playlists p{
+    color: #c7c7c7 ;
+}
+
+.playlists:hover{
+    background-color: #282828;
+}
+
+.img-container{
+    /* border: 2px solid red; */
+    width: 98%;
+    height: 50%;
+    border-radius: 5px;
+    overflow: hidden
+}
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire container */
+    object-position: 50% 50%;
+    /* transform: translate(40%, 50%); */
+}
+/* .playlists img{
+    width: 100%;
+    border-radius: 5px;
+    min-height: 20px;
+} */
+
+
