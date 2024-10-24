@@ -6,6 +6,10 @@ A sleek and modern music player designed to create playlists and play your favor
 
 The Music Player is aimed at providing an intuitive interface for users to enjoy their music collections. The design is inspired by popular music streaming platforms, emphasizing user experience and aesthetic appeal.
 
+## Built with
+HTML,CSS.
+
+
 ## Installation
 
 1. Clone the repository:
