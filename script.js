@@ -7,7 +7,8 @@ let play_Btn = document.getElementById("play");
 
 // function to fetch songs from the folder
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:3000/projects/music-player/music/");
+    //let a = await fetch("http://127.0.0.1:3000/projects/music-player/music/");
+    let a = await fetch("./music/");
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
