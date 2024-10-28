@@ -18,7 +18,8 @@ Download / Clone the Repo: Get the files on your local machine.
 
 Add Songs: Drop your .mp3 files in the music folder.
 Run the Project: Open index.html in your browser to try it out.
-<strong>Note: This only works on a local setup because of CORS policies on live servers, so you might need to run it with something like Live Server on VS Code.</strong>
+
+<h2><strong style="color:green">Note: This only works on a local setup because of CORS policies on live servers, so you might need to run it with something like Live Server on VS Code.</strong><h2>
 
 ## How It Works
 Just click on a song to play it! You can use the buttons for play/pause, and the seekbar to move through the track. Simple as that. 😊
