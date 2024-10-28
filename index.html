@@ -7,6 +7,8 @@
     <title>Music Player</title>
     <link rel="stylesheet" href="style.css">
     <!-- <link rel="stylesheet" href="utility.css"> -->
+
+
 </head>
 
 <body>
@@ -24,8 +26,14 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Playlists</a></li>
                 <li><a href="#">Favorites</a></li>
-                <li><a href="#">Recently Played</a></li>
-                <li><a href="#">Albums</a></li>
+                <li><a href="#">Your Library</a>
+                    <div class="library-songs-container">
+                        <ul>
+                        </ul>
+                    </div>
+                </li>
+                <!-- <li><a href="#">Recently Played</a></li> -->
+                <!-- <li><a href="#">Albums</a></li> -->
             </ul>
         </div>
 
@@ -228,50 +236,59 @@
             <div class="playbar-container">
                 <div class="playbar-info">
                     <ul>
-                        <li id="playbar-song-name">Tu hi Haqeeqat</li>
-                        <li id="playbar-artist-name">Arijit singh</li>
+                        <li id="playbar-song-name">Song</li>
+                        <li id="playbar-artist-name">Artist</li>
                     </ul>
                 </div>
 
                 <span class="playbar-btns">
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z" />
-                          </svg>
-                             
+                    <button id="previous">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z" />
+                        </svg>
+
                     </button>
 
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
-                          </svg>
-                          
+                    <button id="play">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                        </svg>
+
                     </button>
 
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
-                          </svg>
-                          
+                    <button id="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
+                        </svg>
+
                     </button>
                 </span>
-                <input type="range" class="custom-range" id="">
+                <input type="range" class="custom-range" id="seekbar">
                 <span class="time-info">00:00/00:00</span>
             </div>
 
-           
+
 
         </div>
     </div>
 
     <footer class="footer">
+        <!-- <img src="./svg" alt=""> -->
         <div class="footer-container">
             <div class="footer-about">
                 <h3>About This Project</h3>
-                <p>This is a music player project, built with HTML, CSS, and JavaScript. Feel free to contribute, report issues, or fork the project on GitHub.</p>
+                <p>This is a music player project, built with HTML, CSS, and JavaScript. Feel free to contribute, report
+                    issues, or fork the project on GitHub.</p>
             </div>
-            
+
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
@@ -290,11 +307,13 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2024 Music Player Project | @Nomad-soul00 | <a href="https://github.com/nomad-soul00/Music-Player.git">GitHub Repo</a></p>
+            <p>&copy; 2024 Music Player Project | @Nomad-soul00 | <a
+                    href="https://github.com/nomad-soul00/Music-Player.git">GitHub Repo</a></p>
+                   
         </div>
     </footer>
 
-
+    <script src="./script.js"></script>
 </body>
 
 </html>
