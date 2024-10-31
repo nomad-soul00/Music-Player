@@ -7,14 +7,20 @@ let prevButton = document.getElementById("previous")
 let nextButton = document.getElementById("next");
 let playbar_song = document.getElementById("playbar-song-name");
 let artist = document.getElementById("playbar-artist-name");
+let hamburger_menu = document.querySelector(".hamberger").firstElementChild;
+console.log(hamburger_menu);
+let cross_menu = document.querySelector(".cross").firstElementChild;
+let menu = document.querySelector(".menu");
+// console.log(cross_menu);
+
 
 
 
 // function to fetch songs from the folder
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:3000/projects/music-player/music/");
-    // let a = await fetch("./music/");
-    let response = await a.text();
+    // let a = await fetch("http://127.0.0.1:3000/projects/music-player/music/");
+    // let response = await a.text();
+    let response;
     let div = document.createElement("div");
     div.innerHTML = response;
     let song = [];
@@ -34,12 +40,12 @@ async function getSongs() {
 
 
 const playMusic = (track, link_track) => {
-    if(link_track === undefined){
+    if (link_track === undefined) {
         let trackURL = "music/" + track.replaceAll(" ", "%20");
         currentSong.src = trackURL;
         // console.log(currentSong);
         currentSong.play();
-    
+
         // track display
         // let playbar_song = document.getElementById("playbar-song-name");
         // let artist = document.getElementById("playbar-artist-name");
@@ -51,8 +57,8 @@ const playMusic = (track, link_track) => {
         <path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.5" />
         <path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="currentColor" stroke-width="1.5" />
     </svg>`
-    
-    }else{
+
+    } else {
         currentSong.src = link_track;
         currentSong.play();
         // let track_copy = track.slice(0, -4).split(/-(.+)/);
@@ -63,7 +69,7 @@ const playMusic = (track, link_track) => {
         // console.log(playbar_song.innerHTML);
         artist.innerHTML = newTrackCopy[1];
     }
-    
+
 
 }
 
@@ -126,7 +132,7 @@ async function main() {
     // event listener for library music
     Array.from(song).forEach(e => {
         e.addEventListener('click', element => {
-            // console.log(e.querySelector(".song-name").innerHTML);
+            console.log(e.querySelector(".song-name").innerHTML);
             playMusic(e.querySelector(".song-name").innerText);
 
         })
@@ -137,18 +143,18 @@ async function main() {
     let play_Btn = document.getElementById("play");
     // console.log(currentSong.src);
     play_Btn.addEventListener("click", () => {
-        
+
         if (currentSong.paused) {
             default_song = true;
 
-            if(currentSong.src === ""){
+            if (currentSong.src === "") {
                 // currentSong.src = "music/" +  song[0].querySelector(".song-name").innerHTML;
                 let default_song = song[0].querySelector(".song-name").innerHTML;
                 // console.log(default_song);
                 playMusic(default_song)
                 // console.log(currentSong.src);
                 // currentSong.play();
-            }else{
+            } else {
                 currentSong.play();
                 play_Btn.innerHTML = `<svg class = "pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
         <path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.5" />
@@ -182,6 +188,20 @@ async function main() {
 
         // seekbar script
         seekbar.value = currentSong.currentTime;
+
+        if (Math.floor(currentSong.currentTime) === Math.floor(currentSong.duration)) {
+            play_Btn.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+        </svg>`;
+
+        } 
+        // else {
+       
+        // }
     })
     currentSong.addEventListener('loadedmetadata', () => {
         seekbar.max = currentSong.duration;
@@ -203,15 +223,22 @@ async function main() {
         let Playing = currentSong.src;
         // console.log(Playing);
         let prev;
+       
+
         if (Playing === songinArray[0]) {
             currentSong.src = songinArray[0];
             currentSong.play();
             play_Btn.innerHTML = `<svg class = "pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+        <path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.5" />
+        <path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="currentColor" stroke-width="1.5" />
+    </svg>`
+        } else {
+           if(currentSong.src !== ""){
+            play_Btn.innerHTML = `<svg class = "pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
             <path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.5" />
             <path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="currentColor" stroke-width="1.5" />
         </svg>`
-        } else {
-
+           }
             for (let index = 0; index < songinArray.length; index++) {
                 // const element = array[index];
                 if (Playing === songinArray[index]) {
@@ -219,7 +246,8 @@ async function main() {
                     break;
                 }
             }
-            playMusic(undefined,prev);
+            playMusic(undefined, prev);
+            
         }
         // console.log(currentSong.src);
         // if(prev === songinArray[0]){
@@ -232,15 +260,27 @@ async function main() {
     })
 
     // console.log(nextButton)
-    nextButton.addEventListener('click',()=>{
+    nextButton.addEventListener('click', () => {
+       
         let next;
         let Playing = currentSong.src;
-        if(Playing === songinArray[songinArray.length - 1]){
+        if (Playing === songinArray[songinArray.length - 1]) {
             let nexttofirst_song = song[0].querySelector(".song-name").innerHTML;
             // console.log(default_song);
             playMusic(nexttofirst_song);
+            play_Btn.innerHTML = `<svg class = "pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.5" />
+            <path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="currentColor" stroke-width="1.5" />
+        </svg>`
         }
-        else{
+        else {
+            if(currentSong.src !== ""){
+                play_Btn.innerHTML = `<svg class = "pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.5" />
+                <path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="currentColor" stroke-width="1.5" />
+            </svg>`
+               }
+
             for (let index = 0; index < songinArray.length; index++) {
                 // const element = array[index];
                 if (Playing === songinArray[index]) {
@@ -248,10 +288,21 @@ async function main() {
                     break;
                 }
             }
-            playMusic(undefined,next);
+            playMusic(undefined, next);
+         
         }
     })
 
+    // script for hamburger menu
+    hamburger_menu.addEventListener('click',()=>{
+        console.log("hello");
+        menu.style.left = "3px";
+    });
+    
+    cross_menu.addEventListener('click',()=>{
+        // console.log("hello");
+        menu.style.left = "-450px";
+    });
 
 }
 
