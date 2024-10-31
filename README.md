@@ -11,7 +11,8 @@ Track Info: Displays song and artist name while playing.
 Automatic Track Fetch: Grabs songs directly from the music folder.
 
 
-<h2><span style="color:green">Note: This only works on a local setup because of CORS policies on live servers, so you might need to run it with something like Live Server on VS Code. You can also follow the steps below.</span><h2>
+<h2><span style="color:green">Note: This only works on a local setup because of CORS policies on live servers, so you might need to run it with something like Live Server on VS Code. You can also follow the steps below.</span></h2>
+   
 ## Getting Started
 
 
