@@ -10,8 +10,10 @@ Seekbar: Move the seekbar to skip to different parts of a song.
 Track Info: Displays song and artist name while playing.
 Automatic Track Fetch: Grabs songs directly from the music folder.
 
-## Getting Started
+
 <h2><span style="color:green">Note: This only works on a local setup because of CORS policies on live servers, so you might need to run it with something like Live Server on VS Code. You can also follow the steps below.</span><h2>
+## Getting Started
+
 
 Download / Clone the Repo: Get the files on your local machine.
 1. Clone the repository:
